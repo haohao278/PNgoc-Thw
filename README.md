@@ -132,7 +132,7 @@
     </div>
 
     <div class="message">
-        <p>Chúc Đka một ngày 8/3 tràn đầy niềm vui, hạnh phúc, nhận được nhiều ơn Chúa và luôn rạng rỡ như những đóa hoa. Và chúc chị ngày càng xinh đẹp và thành công hơn trong năm nay nhaa(´▽`ʃ❤️ƪ)</p>
+        <p>Chúc Đka một ngày 8/3 tràn đầy niềm vui, hạnh phúc, và luôn rạng rỡ như những đóa hoa. Và chúc chị ngày càng xinh đẹp và thành công hơn trong năm nay nhaa(´▽`ʃ❤️ƪ)</p>
     </div>
 
     <script>
