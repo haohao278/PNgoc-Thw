@@ -13,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #FF99FF;/*
+            background: #f3e8ff;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             display: flex;
