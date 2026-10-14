@@ -7,13 +7,13 @@
     <style>
         :root {
             --primary-color: #ff4d6d;
-            --bg-color: #FFF;
+            --bg-color: #FF99FF;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background:FF99FF;
+            background:;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             display: flex;
