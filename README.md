@@ -13,13 +13,14 @@
         body {
             margin: 0;
             padding: 0;
-            background: #FF99FF;
+            background: #FF99FF;/*
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
+            }
+    
 
         /* Hiệu ứng tiêu đề */
         .header {
