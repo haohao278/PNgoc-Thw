@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Căn Phòng Kỷ Niệm 20/10 Dành Riêng Cho Đka ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Canvas Confetti library for fireworks & hearts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Màn hình mở đầu (giúp kích hoạt nhạc mượt mà trên mobile & desktop) -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="intro-card">
+      <div class="gift-box-icon">🎁</div>
+      <h1>Gửi Đka của toai ✨</h1>
+      <p>Căn phòng này được thiết kế riêng tặng Đka nhân ngày 20/10.</p>
+      <button id="btn-enter" class="btn-primary pulse-btn">
+        <span>Bật đèn & Khám phá căn phòng</span> 💖
+      </button>
+      <span class="music-hint">💡 Hãy đeo tai nghe để cảm nhận không gian ấm áp nhất nhé!</span>
+    </div>
+  </div>
+
+  <!-- CĂN PHÒNG KÝ NIỆM CHÍNH (THE COZY ROOM) -->
+  <main class="room-container" id="room">
+    <!-- Hiệu ứng hạt tim & bụi tiên lơ lửng -->
+    <canvas id="particles-canvas"></canvas>
+s
+    <!-- Lớp phủ bóng đêm khi tắt đèn (Night Mode) -->
+    <div class="night-overlay" id="night-overlay"></div>
+
+    <!-- Dải đèn trần LED âm trần chạy dọc viền phòng -->
+    <div class="ceiling-led-strip"></div>
+
+    <!-- Bảng đếm ngày yêu nhau trên tường -->
+    <div class="banner-counter" id="banner-counter">
+      <span class="heart-icon">💕</span>
+      <span id="counter-text">Bên nhau từ 18/01/2025...</span>
+    </div>
+
+    <!-- ==================== KHU VỰC BÊN TRÁI (LEFT ZONE) ==================== -->
+    <section class="room-zone-left">
+      <!-- Vòm tường LED phát sáng với Chữ Neon "Happy 20/10" & Góc ảnh kỷ niệm -->
+      <div class="memory-arch" id="item-photos" title="Bấm để xem trọn bộ Album kỷ niệm">
+        <div class="neon-happy-text">
+          <span>Happy 20/10</span>
+          <span class="neon-heart">💖</span>
+        </div>
+
+        <!-- Bảng ghim ảnh Polaroid thật của 2 bạn -->
+        <div class="pinned-photos-grid">
+          <div class="pin-card pin-1">
+            <span class="pushpin">📌</span>
+            <img src="assets/photos/photo1.jpg" alt="Ảnh kỷ niệm 1">
+          </div>
+          <div class="pin-card pin-2">
+            <span class="pushpin">📌</span>
+            <img src="assets/photos/photo2.jpg" alt="Ảnh kỷ niệm 2">
+          </div>
+          <div class="pin-card pin-3">
+            <span class="pushpin">📌</span>
+            <img src="assets/photos/photo3.jpg" alt="Ảnh kỷ niệm 3">
+          </div>
+          <div class="pin-card pin-4">
+            <span class="pushpin">📌</span>
+            <img src="assets/photos/photo4.jpg" alt="Ảnh kỷ niệm 4">
+          </div>
+        </div>
+
+        <div class="memory-arch-shelf">
+          <span class="shelf-mini-plant">🌸</span>
+          <span class="shelf-mini-bunny">🐰</span>
+          <span class="shelf-mini-plant">🪴</span>
+        </div>
+        <div class="hint-tag photo-hint"><span class="tap-hand">👆</span> Góc kỷ niệm</div>
+      </div>
+
+      <!-- Kệ TV thông minh & Máy phát nhạc (Smart TV Music Player) -->
+      <div class="tv-unit" id="item-music" title="Bấm để Bật / Tắt nhạc">
+        <div class="headphones-hook" title="Tai nghe">🎧</div>
+        
+        <div class="tv-screen">
+          <div class="tv-display-content">
+            <div class="tv-art">🌅</div>
+            <div class="tv-meta">
+              <span class="tv-song-title">Em Là Điều Tuyệt Vời Nhất ❤️</span>
+              <span class="tv-artist">Dành riêng cho 20/10</span>
+              <!-- Equalizer sóng âm nhạc -->
+              <div class="tv-equalizer" id="tv-equalizer">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="tv-controls">
+              <span id="tv-play-btn" class="tv-btn">▶️</span>
+            </div>
+          </div>
+          <div class="tv-glow"></div>
+        </div>
+
+        <!-- Tủ kệ thấp màu trắng (Sideboard Console) với đèn LED hắt sàn -->
+        <div class="tv-console">
+          <div class="console-doors">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="console-underglow"></div>
+          <!-- Đèn ngủ thỏ con trên sàn -->
+          <div class="bunny-floor-light" title="Đèn ngủ thỏ">
+            <span>🐰💡</span>
+          </div>
+        </div>
+        <div class="hint-tag music-hint-tag"><span class="tap-hand">👆</span> Máy phát nhạc</div>
+      </div>
+    </section>
+
+    <!-- ==================== KHU VỰC Ở GIỮA (CENTER ZONE) ==================== -->
+    <section class="room-zone-center">
+      <!-- Cửa sổ ban công lớn nhìn ra bầu trời đêm & thành phố -->
+      <div class="balcony-window">
+        <div class="window-sky-view">
+          <div class="sky-moon">🌙</div>
+          <div class="sky-stars">✨ ⋆ ｡ ˚ ☁️ ˚ ｡ ⋆ ✨</div>
+          <div class="city-lights">🏙️ 🌃 ✨</div>
+        </div>
+        <!-- Dải đèn sao vàng treo trên rèm cửa -->
+        <div class="fairy-stars-garland">
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+          <span class="star-bulb">⭐</span>
+        </div>
+        <!-- Rèm voan màu hồng phấn hai bên -->
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <div class="balcony-step"></div>
+      </div>
+
+      <!-- Thảm lông trắng tròn êm ái có trái tim hồng ở giữa -->
+      <div class="fluffy-heart-rug">
+        <div class="rug-heart-shape"></div>
+      </div>
+
+      <!-- NHÂN VẬT CHIBI CHÍNH (MÔ PHỎNG BẠN GÁI ĐỨNG Ở TRUNG TÂM) -->
+      <div class="chibi-character-wrapper" id="item-chibi" title="Chạm vào tui đi nè!">
+        <!-- Bong bóng thoại của Chibi -->
+        <div class="speech-bubble" id="chibi-speech">
+          <span id="speech-content">Chào Đka ! Hôm nay là 20/10 đó nha 🌸</span>
+          <div class="bubble-arrow"></div>
+        </div>
+
+        <!-- Avatar Chibi của bạn gái -->
+        <div class="chibi-avatar-container">
+          <img src="assets/chibi.png" alt="Chibi Em Yêu" id="chibi-img" onerror="this.onerror=null; this.src='assets/chibi.svg';">
+          <div class="chibi-shadow"></div>
+        </div>
+        <div class="character-name-badge">
+          <span id="girlfriend-name">Đka lục bạc của em</span> 👑
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KHU VỰC BÊN PHẢI (RIGHT ZONE) ==================== -->
+    <section class="room-zone-right">
+      <!-- Tường trang trí: Tranh nghệ thuật & Dây leo cây xanh -->
+      <div class="wall-art-decor">
+        <div class="framed-poster">
+          <p class="poster-text">Bên em nhá Đka ❤️</p>
+        </div>
+        <div class="hanging-plant-ivy" title="Dây leo xanh mát">🌿🌿</div>
+        <div class="wall-neon-heart">💖</div>
+      </div>
+
+      <!-- Giường ngủ / Sofa êm ái phủ gối trái tim & chăn pastel -->
+      <div class="cozy-sofa-bed">
+        <div class="bed-back-cushions">
+          <span class="cushion cushion-white">🤍</span>
+          <span class="cushion cushion-pink">💖</span>
+          <span class="cushion cushion-heart">💗</span>
+          <span class="cushion pet-tom-doll" id="item-pet" title="Vuốt ve bé Tom 🐾">🐰</span>
+        </div>
+        <div class="bed-mattress">
+          <div class="pink-folded-throw"></div>
+        </div>
+
+        <!-- Bàn đầu giường với Cây Đèn Ngủ (Bấm để Tắt/Bật đèn phòng) -->
+        <div class="bedside-table" id="item-lamp" title="Bấm để Bật / Tắt ánh sáng phòng">
+          <div class="table-lamp">
+            <div class="lamp-head"></div>
+            <div class="lamp-ambient-glow"></div>
+            <div class="lamp-stand"></div>
+          </div>
+          <div class="hint-tag lamp-hint"><span class="tap-hand">👆</span> Đèn ngủ</div>
+        </div>
+      </div>
+
+      <!-- Bàn trà nhỏ hình tròn với Bình hoa tulip & Bức thư tình 20/10 -->
+      <div class="coffee-table-area">
+        <div class="round-coffee-table">
+          <!-- Bình hoa tulip hồng tươi -->
+          <div class="tulip-vase" title="Hoa tulip tươi">
+            <div class="tulip-flowers">🌷🌷🌷</div>
+            <div class="glass-cup">🥛</div>
+          </div>
+          <!-- Cốc nến thơm lãng mạn -->
+          <div class="scented-candle" title="Nến thơm ấm áp">
+            <span class="candle-flame">🔥</span>
+            <span class="candle-cup">🕯️</span>
+          </div>
+          <!-- HỘP QUÀ / BỨC THƯ TÌNH 20/10 BÍ MẬT -->
+          <div class="gift-box-envelope" id="item-letter" title="Mở bức thư chúc 20/10">
+            <div class="hint-tag letter-hint"><span class="tap-hand">👆</span> Thư 20/10</div>
+            <div class="envelope-item">
+              <span class="env-icon">💌</span>
+              <span class="env-badge">20/10</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ghế lười hạt xốp hồng êm ái (Fluffy Beanbag) -->
+        <div class="fluffy-beanbag" title="Ghế lười êm ái">
+          <div class="beanbag-heart-pillow">💗</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nút điều khiển nhanh góc phải màn hình -->
+    <div class="floating-controls">
+      <button id="btn-toggle-music" class="circle-btn" title="Bật/Tắt nhạc">🔊</button>
+      <button id="btn-fireworks" class="circle-btn" title="Bắn tim & pháo hoa">🎉</button>
+    </div>
+  </main>
+
+  <!-- ==================== MODAL: ALBUM ẢNH KỶ NIỆM ==================== -->
+  <div class="modal-overlay" id="modal-photos">
+    <div class="modal-content photo-modal">
+      <button class="modal-close" data-close="modal-photos">&times;</button>
+      <h2>📸 Những Khoảnh Khắc Của Chúng Mình</h2>
+      <p class="modal-subtitle">Mỗi giây phút bên em đều là kỷ niệm đẹp nhất 💕</p>
+
+      <div class="gallery-slider">
+        <div class="polaroid-card">
+          <div class="polaroid-img-wrapper">
+            <img src="assets/photos/photo1.jpg" alt="Ảnh kỷ niệm 1" class="gallery-img">
+          </div>
+          <div class="polaroid-caption">tấm nào cũng đẹp chả biết khen gì nữa 💕</div>
+        </div>
+        <div class="polaroid-card">
+          <div class="polaroid-img-wrapper">
+            <img src="assets/photos/photo2.jpg" alt="Ảnh kỷ niệm 2" class="gallery-img">
+          </div>
+          <div class="polaroid-caption">Cười nhìu lên nhé Đka đừng tiêu cực nhé ✨</div>
+        </div>
+        <div class="polaroid-card">
+          <div class="polaroid-img-wrapper">
+            <img src="assets/photos/photo3.jpg" alt="Ảnh kỷ niệm 3" class="gallery-img">
+          </div>
+          <div class="polaroid-caption">Nói chuyện với Đka vui phết 🌸</div>
+        </div>
+        <div class="polaroid-card">
+          <div class="polaroid-img-wrapper">
+            <img src="assets/photos/photo4.jpg" alt="Ảnh kỷ niệm 4" class="gallery-img">
+          </div>
+          <div class="polaroid-caption">tấm đầu tiên vòi được từ Đka ❤️</div>
+        </div>
+      </div>
+      <p class="swipe-hint">👉 Vuốt sang ngang hoặc cuộn chuột để xem trọn bộ 4 bức ảnh kỷ niệm!</p>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: BỨC THƯ TÌNH 20/10 (TYPEWRITER) ==================== -->
+  <div class="modal-overlay" id="modal-letter">
+    <div class="modal-content letter-modal">
+      <button class="modal-close" data-close="modal-letter">&times;</button>
+      <div class="letter-paper">
+        <div class="letter-stamp">20/10 💌</div>
+        <h3 class="letter-salutation">Gửi Đka - Người chị iu quý,</h3>
+        <div class="letter-body" id="letter-text">
+          <!-- Chữ sẽ được gõ tự động bởi script -->
+        </div>
+        <div class="letter-signature">
+          <p>Yêu em thật nhiều,</p>
+          <p class="author-name" id="author-name">Người báo Đka nhất ❤️</p>
+        </div>
+      </div>
+      <div class="letter-actions">
+        <button id="btn-replay-letter" class="btn-secondary">Gõ lại từ đầu ✍️</button>
+        <button id="btn-hug" class="btn-primary">Ôm một cái thật chặt 🫂</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio nhạc nền (File local mp3 trong thư mục assets) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mp3">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
